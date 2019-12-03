@@ -27,6 +27,9 @@
             <button type="submit" class="btn btn-default">搜索</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
+            <li th:if="${session.user != null}">
+                <a href="/publish">发布</a>
+            </li>
             <li class="dropdown" th:if="${session.user != null}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                    aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
@@ -44,6 +47,32 @@
         </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+            <h2>
+                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                博客列表
+            </h2>
+            <hr>
+
+            <div class="media">
+                <div class="media-body">
+                    <h4 class="media-heading">heading</h4>
+                    <span class="text-desc">回复浏览</span>
+                </div>
+                <div class="media-body">
+                    删除等等
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

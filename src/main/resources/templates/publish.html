@@ -27,6 +27,9 @@
             <button type="submit" class="btn btn-default">搜索</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
+            <li th:if="${session.user != null}">
+                <a href="/publish">发布</a>
+            </li>
             <li class="dropdown" th:if="${session.user != null}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                    aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
@@ -54,24 +57,25 @@
             </h2>
             <hr>
 
-            <form action="">
+            <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">标题</label>
-                    <input type="text" class="form-control" id="title" placeholder="标题在这里写...">
+                    <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="标题在这里写...">
                 </div>
 
                 <div class="form-group">
                     <label for="title">内容</label>
                     <textarea name="content" id="content" placeholder="内容在这里写..."
-                              class="form-control" cols="30" rows="10"></textarea>
+                              class="form-control" cols="30" rows="10" th:value="${content}"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="title">添加标签</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="标签以 , 号隔开">
+                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="标签以 , 号隔开">
                 </div>
 
-                <button type="button" class="btn btn-success btn-publish">发布</button>
+                <span class="alert alert-danger" th:text="${error}" th:hidden="${error == null}"></span>
+                <button type="submit" class="btn btn-success btn-publish">发布</button>
             </form>
 
         </div>

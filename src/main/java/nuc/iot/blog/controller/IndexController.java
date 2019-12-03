@@ -2,6 +2,7 @@ package nuc.iot.blog.controller;
 
 import nuc.iot.blog.mapper.UserMapper;
 import nuc.iot.blog.model.User;
+import nuc.iot.blog.util.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -22,13 +23,13 @@ public class IndexController {
     public String index(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
 
-        for (Cookie cookie :
-                cookies) {
-            if (cookie.getName().equals("token")) {
-                String token = cookie.getValue();
-                User user = userMapper.findByToken(token);
-                request.getSession().setAttribute("user", user);
-            }
+        String token = CookieUtils.getValue(cookies, "token");
+
+        if (token != null) {
+            User user = userMapper.findByToken(token);
+            request.getSession().setAttribute("user", user);
+        } else {
+            request.getSession().setAttribute("user", null);
         }
 
         return "index";

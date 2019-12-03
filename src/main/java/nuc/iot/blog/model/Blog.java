@@ -12,6 +12,36 @@ public class Blog {
     private Integer likeCount;
     private String tag;
 
+    public Blog() {
+    }
+
+    public Blog(String title, String content, Long gmtCreate,
+                Long gmtModified, Integer creator, String tag) {
+        this.title = title;
+        this.content = content;
+        this.gmtCreate = gmtCreate;
+        this.gmtModified = gmtModified;
+        this.creator = creator;
+        this.commentCount = 0;
+        this.viewCount = 0;
+        this.likeCount = 0;
+        this.tag = tag;
+    }
+
+    public Blog(String title, String content, Long gmtCreate,
+                Long gmtModified, Integer creator, Integer commentCount,
+                Integer viewCount, Integer likeCount, String tag) {
+        this.title = title;
+        this.content = content;
+        this.gmtCreate = gmtCreate;
+        this.gmtModified = gmtModified;
+        this.creator = creator;
+        this.commentCount = commentCount;
+        this.viewCount = viewCount;
+        this.likeCount = likeCount;
+        this.tag = tag;
+    }
+
     public Integer getId() {
         return id;
     }
