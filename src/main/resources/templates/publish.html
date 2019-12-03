@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>扎扎博客</title>
+    <title>扎扎博客-发布博客</title>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="css/blog.css"/>
@@ -40,10 +40,52 @@
             <li th:if="${session.user == null}">
                 <a href="https://github.com/login/oauth/authorize?client_id=6f5b3e73c6c988a1d4a7&redirect_uri=http://127.0.0.1:8089/callback&scope=githubUser&state=1">登录</a>
             </li>
-
         </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+            <h2>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                编辑发布
+            </h2>
+            <hr>
+
+            <form action="">
+                <div class="form-group">
+                    <label for="title">标题</label>
+                    <input type="text" class="form-control" id="title" placeholder="标题在这里写...">
+                </div>
+
+                <div class="form-group">
+                    <label for="title">内容</label>
+                    <textarea name="content" id="content" placeholder="内容在这里写..."
+                              class="form-control" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">添加标签</label>
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="标签以 , 号隔开">
+                </div>
+
+                <button type="button" class="btn btn-success btn-publish">发布</button>
+            </form>
+
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h3>
+                博客指南
+            </h3>
+            根本没有什么指南!!<br>
+            就是凑数用的<br>
+            哈哈哈哈哈哈<br>
+            写就完事儿了┗|｀O′|┛ 嗷~~
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

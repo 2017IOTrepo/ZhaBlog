@@ -11,18 +11,21 @@ public class User {
     private Long gmtCreate;
     private Long gmtModified;
     private boolean isAdmin;
+    private String bio;
 
     public User() {
     }
 
     public User(String accountId, String name, String token,
-                Long gmtCreate, Long gmtModified, boolean isAdmin) {
+                Long gmtCreate, Long gmtModified, boolean isAdmin,
+                String bio) {
         this.accountId = accountId;
         this.name = name;
         this.token = token;
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
         this.isAdmin = isAdmin;
+        this.bio = bio;
     }
 
     public Integer getId() {
@@ -79,5 +82,13 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }
