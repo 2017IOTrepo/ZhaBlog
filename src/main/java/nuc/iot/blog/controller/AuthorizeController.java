@@ -2,6 +2,8 @@ package nuc.iot.blog.controller;
 
 import nuc.iot.blog.dto.AccessTokenDTO;
 import nuc.iot.blog.dto.GithubUser;
+import nuc.iot.blog.mapper.UserMapper;
+import nuc.iot.blog.model.User;
 import nuc.iot.blog.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,11 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
+
 @Controller
 public class AuthorizeController {
 
     @Autowired
     private GithubProvider githubProvider;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Value("${github.client_id}")
     private String clientId;
@@ -27,7 +35,8 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(
             @RequestParam(name = "code") String code,
-            @RequestParam(name = "state") String state
+            @RequestParam(name = "state") String state,
+            HttpServletRequest request
     ) {
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id(clientId);
@@ -39,9 +48,23 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
-        System.out.println(githubUser.getName());
+        if (githubUser != null) {
+            Long time = System.currentTimeMillis();
+            User user = new User(
+                    String.valueOf(githubUser.getId()),
+                    githubUser.getName(),
+                    UUID.randomUUID().toString(),
+                    time,
+                    time,
+                    false
+            );
+            userMapper.insert(user);
 
-        return "index";
+            request.getSession().setAttribute("user", githubUser);
+            return "redirect:/";
+        } else {
+            return "redirect:/";
+        }
     }
 
 }
