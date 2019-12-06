@@ -4,6 +4,8 @@ import nuc.iot.blog.model.Blog;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 @Component
 public interface BlogMapper {
@@ -21,5 +23,9 @@ public interface BlogMapper {
     @Select("select * from blog where id = id")
     Blog selectByPrimaryKey(@Param("id") Integer id);
 
+    @Update("")
     int updateByExampleSelective(Blog updateBlog);
+
+    @Select("select * from blog")
+    List<Blog> selectAllBlog();
 }
