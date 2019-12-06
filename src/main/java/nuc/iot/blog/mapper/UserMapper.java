@@ -8,15 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserMapper {
 
-    @Insert("insert into user (account_id, name, token, gmt_create, gmt_modified, is_admin, bio) " +
-            "values ('${accountId}', '${name}', '${token}', ${gmtCreate}, ${gmtModified}, ${isAdmin}, '${bio}')")
+    @Insert("insert into user (name, email, password, gmt_create, gmt_modified, is_admin, bio) " +
+            "values ('${name}', '${email}', '${password}', ${gmtCreate}, ${gmtModified}, ${isAdmin}, '${bio}')")
     @Options(useGeneratedKeys=true, keyProperty="id")
     void insert(User user);
 
-    @Select("select * from user where token = '${token}'")
-    User findByToken(@Param("token") String token);
+    @Select("select password from user where email = '${email}'")
+    String findPwdByEmail(@Param("email") String email);
 
-    @Select("select id from user where token = '${token}'")
-    Integer findIdByToken(@Param("token") String token);
+    @Select("select * from user where id = ${id}")
+    User findById(@Param("id") int id);
+
+    @Select("select * from user where email = '${email}'")
+    User findUserByEmail(@Param("email") String email);
 
 }

@@ -5,9 +5,9 @@ package nuc.iot.blog.model;
  * */
 public class User {
     private Integer id;
-    private String accountId;
+    private String password;
     private String name;
-    private String token;
+    private String email;
     private Long gmtCreate;
     private Long gmtModified;
     private boolean isAdmin;
@@ -16,12 +16,12 @@ public class User {
     public User() {
     }
 
-    public User(String accountId, String name, String token,
+    public User(String password, String name, String email,
                 Long gmtCreate, Long gmtModified, boolean isAdmin,
                 String bio) {
-        this.accountId = accountId;
+        this.password = password;
         this.name = name;
-        this.token = token;
+        this.email = email;
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
         this.isAdmin = isAdmin;
@@ -36,12 +36,12 @@ public class User {
         this.id = id;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -52,12 +52,12 @@ public class User {
         this.name = name;
     }
 
-    public String getToken() {
-        return token;
+    public String getEmail() {
+        return email;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getGmtCreate() {
@@ -90,5 +90,19 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtModified=" + gmtModified +
+                ", isAdmin=" + isAdmin +
+                ", bio='" + bio + '\'' +
+                '}';
     }
 }

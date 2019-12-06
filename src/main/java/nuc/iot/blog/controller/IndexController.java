@@ -23,14 +23,16 @@ public class IndexController {
     public String index(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
 
-        String token = CookieUtils.getValue(cookies, "token");
+        String id = CookieUtils.getValue(cookies, "user_id");
 
-        if (token != null) {
-            User user = userMapper.findByToken(token);
+        if (id != null) {
+            User user = userMapper.findById(Integer.valueOf(id));
             request.getSession().setAttribute("user", user);
         } else {
             request.getSession().setAttribute("user", null);
         }
+
+
 
         return "index";
     }
