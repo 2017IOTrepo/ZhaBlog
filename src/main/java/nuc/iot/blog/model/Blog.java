@@ -121,4 +121,20 @@ public class Blog {
     public void setTag(String tag) {
         this.tag = tag;
     }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtModified=" + gmtModified +
+                ", creator=" + creator +
+                ", commentCount=" + commentCount +
+                ", viewCount=" + viewCount +
+                ", likeCount=" + likeCount +
+                ", tag='" + tag + '\'' +
+                '}';
+    }
 }

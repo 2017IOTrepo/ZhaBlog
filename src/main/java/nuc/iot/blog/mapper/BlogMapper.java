@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public interface BlogMapper {
 
-    @Insert("insert into blog (title, content, gmt_create, gmt_modified, creator, tag) " +
+    @Insert("insert into blog (title, content, gmtCreate, gmtModified, creator, tag) " +
             "values ('${title}', '${content}', ${gmtCreate}, ${gmtModified}, ${creator}, '${tag}')")
     void insert(Blog blog);
 
@@ -20,8 +20,8 @@ public interface BlogMapper {
     @Update("")
     void update();
 
-    @Select("select * from blog where id = id")
-    Blog selectByPrimaryKey(@Param("id") Integer id);
+    @Select("select * from blog where id = ${id}")
+    Blog selectByPrimaryKey(@Param("id") int id);
 
     @Update("")
     int updateByExampleSelective(Blog updateBlog);
