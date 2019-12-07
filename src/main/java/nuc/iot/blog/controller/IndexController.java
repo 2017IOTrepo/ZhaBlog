@@ -21,7 +21,6 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-
         List<Blog> blogs = blogMapper.selectAllBlog();
         model.addAttribute("blogs", blogs);
 
