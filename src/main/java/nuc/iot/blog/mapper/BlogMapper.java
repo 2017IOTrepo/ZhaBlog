@@ -23,7 +23,8 @@ public interface BlogMapper {
     @Select("select * from blog where id = ${id}")
     Blog selectByPrimaryKey(@Param("id") int id);
 
-    @Update("")
+    @Update("update blog set gmtModified=${gmtModified}, " +
+            "title='${title}', content='${content}', tag='${tag}' where id = ${id}")
     int updateByExampleSelective(Blog updateBlog);
 
     @Select("select * from blog")

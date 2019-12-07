@@ -1,5 +1,6 @@
 package nuc.iot.blog.service;
 
+import nuc.iot.blog.dto.CommentDTO;
 import nuc.iot.blog.exception.CustomizeErrorCode;
 import nuc.iot.blog.exception.CustomizeException;
 import nuc.iot.blog.mapper.BlogMapper;
@@ -22,8 +23,8 @@ public class CommentService {
     @Autowired
     private BlogMapper blogMapper;
 
-    public List<Comment> getCommentListBytId(Integer id) {
-        List<Comment> comments = commentMapper.selectByBlogId(id);
+    public List<CommentDTO> getCommentListBytId(Integer id) {
+        List<CommentDTO> comments = commentMapper.selectDTOByBlogId(id);
         return comments;
     }
 

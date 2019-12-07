@@ -41,12 +41,14 @@ public class BlogService {
             }
 
             Blog updateBlog = new Blog();
+            updateBlog.setId(blog.getId());
             updateBlog.setGmtModified(System.currentTimeMillis());
             updateBlog.setTitle(blog.getTitle());
             updateBlog.setContent(blog.getContent());
             updateBlog.setTag(blog.getTag());
 
             int updated = blogMapper.updateByExampleSelective(updateBlog);
+            System.out.println(updated);
         }
     }
 

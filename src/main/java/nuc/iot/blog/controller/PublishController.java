@@ -1,5 +1,6 @@
 package nuc.iot.blog.controller;
 
+import nuc.iot.blog.dto.BlogDTO;
 import nuc.iot.blog.mapper.BlogMapper;
 import nuc.iot.blog.model.Blog;
 import nuc.iot.blog.model.User;
@@ -30,17 +31,16 @@ public class PublishController {
         return "publish";
     }
 
-//    @GetMapping("/publish/{id}")
-//    public String edit(@PathVariable(name = "id") Long id,
-//                       Model model) {
-//        QuestionDTO question = questionService.getById(id);
-//        model.addAttribute("title", question.getTitle());
-//        model.addAttribute("description", question.getDescription());
-//        model.addAttribute("tag", question.getTag());
-//        model.addAttribute("id", question.getId());
-//        model.addAttribute("tags", TagCache.get());
-//        return "publish";
-//    }
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable(name = "id") Integer id,
+                       Model model) {
+        BlogDTO blogDTO = blogService.getById(id);
+        model.addAttribute("title", blogDTO.getBlog().getTitle());
+        model.addAttribute("content", blogDTO.getBlog().getContent());
+        model.addAttribute("tag", blogDTO.getBlog().getTag());
+        model.addAttribute("id", blogDTO.getBlog().getId());
+        return "publish";
+    }
 
     @PostMapping("/publish")
     public String doPublish(

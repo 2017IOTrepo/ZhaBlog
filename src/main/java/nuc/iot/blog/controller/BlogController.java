@@ -1,6 +1,7 @@
 package nuc.iot.blog.controller;
 
 import nuc.iot.blog.dto.BlogDTO;
+import nuc.iot.blog.dto.CommentDTO;
 import nuc.iot.blog.exception.CustomizeErrorCode;
 import nuc.iot.blog.exception.CustomizeException;
 import nuc.iot.blog.model.Comment;
@@ -33,10 +34,10 @@ public class BlogController {
         }
 
         BlogDTO blogDTO = blogService.getById(blogId);
-        List<Comment> comments = commentService.getCommentListBytId(blogId);
+        List<CommentDTO> comments = commentService.getCommentListBytId(blogId);
 
-//        累加阅读数
-//        questionService.incView(blogId);
+//        TODO:累加阅读数
+//        blogService.incView(blogId);
         model.addAttribute("blog", blogDTO);
         model.addAttribute("comments", comments);
         return "blog";
