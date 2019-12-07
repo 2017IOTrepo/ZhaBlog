@@ -70,4 +70,11 @@ public class BlogService {
         List<Blog> blogs = blogMapper.selectByUserKey(id);
         return blogs;
     }
+
+    public void deleteBlog(Integer id) {
+        int deleted = blogMapper.deleteBlogById(id);
+        if (deleted == 0) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
+    }
 }

@@ -14,8 +14,8 @@ public interface BlogMapper {
             "values ('${title}', '${content}', ${gmtCreate}, ${gmtModified}, ${creator}, '${tag}')")
     void insert(Blog blog);
 
-    @Delete("")
-    void delete();
+    @Delete("delete from blog where id = ${id}")
+    int deleteBlogById(@Param("id") int id);
 
     @Select("select * from blog where id = ${id}")
     Blog selectByPrimaryKey(@Param("id") int id);

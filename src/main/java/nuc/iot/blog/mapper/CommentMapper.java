@@ -2,10 +2,7 @@ package nuc.iot.blog.mapper;
 
 import nuc.iot.blog.dto.CommentDTO;
 import nuc.iot.blog.model.Comment;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,5 +23,7 @@ public interface CommentMapper {
             "values (${likeCount}, '${content}', ${gmtCreate}, ${gmtModified}, ${blogId}, ${userId})")
     int insert(Comment comment);
 
+    @Delete("delete from comment where id = ${id}")
+    int deleteBlogById(@Param("id") int id);
 
 }

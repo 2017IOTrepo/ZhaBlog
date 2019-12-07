@@ -36,4 +36,11 @@ public class CommentService {
         }
         commentMapper.insert(comment);
     }
+
+    public void deleteById(Integer id) {
+        int deleted = commentMapper.deleteBlogById(id);
+        if (deleted == 0) {
+            throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
+        }
+    }
 }

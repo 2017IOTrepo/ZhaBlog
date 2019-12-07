@@ -39,6 +39,10 @@
                        th:if="${session.user != null && session.user.id == blog.blog.creator}">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span>
                     </a>
+                    <a th:href="@{'/delete/blog/'+${blog.blog.id}}" class="community-menu"
+                       th:if="${session.user != null && session.user.id == blog.blog.creator}">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">删除</span>
+                    </a>
                 </div>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             </div>
@@ -58,6 +62,10 @@
                             <div th:text="${comment.content}"></div>
                         </div>
                     </div>
+                    <a th:href="@{'/delete/comment/'+${comment.id}} + '/'+${blog.blog.id}" class="community-menu"
+                       th:if="${session.user != null && session.user.id == comment.userId}">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">删除</span>
+                    </a>
                 </div>
             </div>
 
