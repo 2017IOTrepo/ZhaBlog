@@ -11,6 +11,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class BlogService {
     @Autowired
@@ -62,5 +64,10 @@ public class BlogService {
         User user = userMapper.findById(blog.getCreator());
         blogDTO.setUser(user);
         return blogDTO;
+    }
+
+    public List<Blog> getMyBlogs(Integer id) {
+        List<Blog> blogs = blogMapper.selectByUserKey(id);
+        return blogs;
     }
 }

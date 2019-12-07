@@ -17,11 +17,11 @@ public interface BlogMapper {
     @Delete("")
     void delete();
 
-    @Update("")
-    void update();
-
     @Select("select * from blog where id = ${id}")
     Blog selectByPrimaryKey(@Param("id") int id);
+
+    @Select("select * from blog where creator = ${id}")
+    List<Blog> selectByUserKey(@Param("id") int id);
 
     @Update("update blog set gmtModified=${gmtModified}, " +
             "title='${title}', content='${content}', tag='${tag}' where id = ${id}")
