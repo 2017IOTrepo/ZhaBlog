@@ -16,4 +16,7 @@ public interface CommentMapper {
     @Select("select * from comment where id = ${id}")
     List<Comment> selectByBlogId(@Param("id") Integer id);
 
+    @Insert("insert into comment () values ()")
+    int insert(Comment comment);
+
 }

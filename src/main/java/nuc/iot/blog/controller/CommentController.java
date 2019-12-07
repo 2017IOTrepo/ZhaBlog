@@ -1,5 +1,10 @@
 package nuc.iot.blog.controller;
 
+import nuc.iot.blog.dto.CommentCreateDTO;
+import nuc.iot.blog.dto.ResultDTO;
+import nuc.iot.blog.exception.CustomizeErrorCode;
+import nuc.iot.blog.model.Comment;
+import nuc.iot.blog.model.User;
 import nuc.iot.blog.service.CommentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +35,13 @@ public class CommentController {
         }
 
         Comment comment = new Comment();
-        comment.setParentId(commentCreateDTO.getParentId());
+        comment.setBlogId(commentCreateDTO.getParentId());
         comment.setContent(commentCreateDTO.getContent());
-        comment.setType(commentCreateDTO.getType());
         comment.setGmtModified(System.currentTimeMillis());
         comment.setGmtCreate(System.currentTimeMillis());
-        comment.setCommentator(user.getId());
-        comment.setLikeCount(0L);
-        commentService.insert(comment, user);
+        comment.setUserId(user.getId());
+        comment.setLikeCount(0);
+        commentService.insert(comment);
         return ResultDTO.okOf();
     }
 }

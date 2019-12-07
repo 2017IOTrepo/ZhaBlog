@@ -56,7 +56,7 @@ public class BlogService {
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
         BlogDTO blogDTO = new BlogDTO();
-        BeanUtils.copyProperties(blog, blogDTO);
+        blogDTO.setBlog(blog);
         User user = userMapper.findById(blog.getCreator());
         blogDTO.setUser(user);
         return blogDTO;
