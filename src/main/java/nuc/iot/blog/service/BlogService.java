@@ -7,7 +7,6 @@ import nuc.iot.blog.mapper.BlogMapper;
 import nuc.iot.blog.mapper.UserMapper;
 import nuc.iot.blog.model.Blog;
 import nuc.iot.blog.model.User;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -76,5 +75,9 @@ public class BlogService {
         if (deleted == 0) {
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
+    }
+
+    public List<Blog> list() {
+        return blogMapper.selectAllBlog();
     }
 }

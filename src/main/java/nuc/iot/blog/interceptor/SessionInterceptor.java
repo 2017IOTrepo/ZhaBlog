@@ -6,6 +6,7 @@ import nuc.iot.blog.util.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,7 @@ import java.util.List;
  * Created by codedrinker on 2019/5/16.
  */
 @Service
+@Component
 public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -31,6 +33,9 @@ public class SessionInterceptor implements HandlerInterceptor {
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             String ans = CookieUtils.getValue(cookies, "user_id");
+            if (ans == null) {
+                return true;
+            }
             User user = userMapper.findById(Integer.valueOf(ans));
             HttpSession session = request.getSession();
             session.setAttribute("user", user);

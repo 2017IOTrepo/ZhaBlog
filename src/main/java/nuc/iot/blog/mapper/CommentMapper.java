@@ -15,6 +15,10 @@ public interface CommentMapper {
     List<Comment> selectByBlogId(@Param("id") Integer id);
 
     @Select("select comment.id, name, content, userId, blogId from user, comment " +
+            "where user.id=comment.userId")
+    List<CommentDTO> selectAllComments();
+
+    @Select("select comment.id, name, content, userId, blogId from user, comment " +
             "where user.id=comment.userId and blogId=${blogId}")
     List<CommentDTO> selectDTOByBlogId(@Param("blogId") Integer blogId);
 

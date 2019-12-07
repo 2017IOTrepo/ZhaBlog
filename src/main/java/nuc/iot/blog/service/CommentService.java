@@ -43,4 +43,8 @@ public class CommentService {
             throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
         }
     }
+
+    public List<CommentDTO> list() {
+        return commentMapper.selectAllComments();
+    }
 }

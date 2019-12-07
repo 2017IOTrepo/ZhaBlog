@@ -45,4 +45,27 @@ public class DeleteController {
 
         return "redirect:/blog/" + String.valueOf(blogid);
     }
+
+    @GetMapping("/admin/delete/blog/{id}")
+    public String doAdminBlogDelete(
+            @PathVariable(name = "id") Integer id,
+            HttpServletRequest request,
+            Model model) {
+
+        blogService.deleteBlog(id);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/admin/delete/comment/{id}/{blogid}")
+    public String doAdminCommentDelete(
+            @PathVariable(name = "id") Integer id,
+            @PathVariable(name = "blogid") Integer blogid,
+            HttpServletRequest request,
+            Model model) {
+
+        commentService.deleteById(id);
+
+        return "redirect:/";
+    }
 }
