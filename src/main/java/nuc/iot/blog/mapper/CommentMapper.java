@@ -23,8 +23,8 @@ public interface CommentMapper {
     List<CommentDTO> selectDTOByBlogId(@Param("blogId") Integer blogId);
 
 
-    @Insert("insert into comment (likeCount, content, gmtCreate, gmtModified, blogId, userId) " +
-            "values (${likeCount}, '${content}', ${gmtCreate}, ${gmtModified}, ${blogId}, ${userId})")
+    @Insert("insert into comment (content, blogId, userId) " +
+            "values ('${content}', ${blogId}, ${userId})")
     int insert(Comment comment);
 
     @Delete("delete from comment where id = ${id}")

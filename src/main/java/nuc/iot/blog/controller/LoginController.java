@@ -110,7 +110,6 @@ public class LoginController {
                 name,
                 email,
                 curr,
-                curr,
                 false,
                 "这个人没写呢"
         );

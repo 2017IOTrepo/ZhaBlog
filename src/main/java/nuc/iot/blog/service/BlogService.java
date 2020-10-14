@@ -25,8 +25,6 @@ public class BlogService {
             // 创建
             blog.setGmtCreate(System.currentTimeMillis());
             blog.setGmtModified(blog.getGmtCreate());
-            blog.setViewCount(0);
-            blog.setLikeCount(0);
             blog.setCommentCount(0);
             blogMapper.insert(blog);
         } else {

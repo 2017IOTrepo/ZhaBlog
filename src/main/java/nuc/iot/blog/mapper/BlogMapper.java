@@ -27,6 +27,12 @@ public interface BlogMapper {
             "title='${title}', content='${content}', tag='${tag}' where id = ${id}")
     int updateByExampleSelective(Blog updateBlog);
 
+    @Update("update blog set commentCount = commentCount+1 where id = ${id}")
+    int increaseCommentCount(@Param("id") int blogid);
+
+    @Update("update blog set commentCount = commentCount-1 where id = ${id}")
+    int decreaseCommentCount(@Param("id") int blogid);
+
     @Select("select * from blog")
     List<Blog> selectAllBlog();
 }

@@ -32,7 +32,6 @@
                         <a th:href="@{'/blog/'+ ${blog.id}}" th:text="${blog.title}"></a>
                     </h4>
                     <span class="text-desc"><span th:text="${blog.commentCount}"></span> 个回复 • <span
-                            th:text="${blog.viewCount}"></span> 次浏览 • <span
                             th:text="${#dates.format(blog.gmtCreate,'yyyy-MM-dd HH:mm')}"></span></span>
                     <span></span>
                 </div>

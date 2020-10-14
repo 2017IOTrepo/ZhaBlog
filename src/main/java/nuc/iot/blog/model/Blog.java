@@ -8,8 +8,6 @@ public class Blog {
     private Long gmtModified;
     private Integer creator;
     private Integer commentCount;
-    private Integer viewCount;
-    private Integer likeCount;
     private String tag;
 
     public Blog() {
@@ -23,22 +21,18 @@ public class Blog {
         this.gmtModified = gmtModified;
         this.creator = creator;
         this.commentCount = 0;
-        this.viewCount = 0;
-        this.likeCount = 0;
         this.tag = tag;
     }
 
     public Blog(String title, String content, Long gmtCreate,
                 Long gmtModified, Integer creator, Integer commentCount,
-                Integer viewCount, Integer likeCount, String tag) {
+                String tag) {
         this.title = title;
         this.content = content;
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
         this.creator = creator;
         this.commentCount = commentCount;
-        this.viewCount = viewCount;
-        this.likeCount = likeCount;
         this.tag = tag;
     }
 
@@ -98,22 +92,6 @@ public class Blog {
         this.commentCount = commentCount;
     }
 
-    public Integer getViewCount() {
-        return viewCount;
-    }
-
-    public void setViewCount(Integer viewCount) {
-        this.viewCount = viewCount;
-    }
-
-    public Integer getLikeCount() {
-        return likeCount;
-    }
-
-    public void setLikeCount(Integer likeCount) {
-        this.likeCount = likeCount;
-    }
-
     public String getTag() {
         return tag;
     }
@@ -132,8 +110,6 @@ public class Blog {
                 ", gmtModified=" + gmtModified +
                 ", creator=" + creator +
                 ", commentCount=" + commentCount +
-                ", viewCount=" + viewCount +
-                ", likeCount=" + likeCount +
                 ", tag='" + tag + '\'' +
                 '}';
     }

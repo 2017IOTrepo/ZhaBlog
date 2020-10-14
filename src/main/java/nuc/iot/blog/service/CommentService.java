@@ -44,6 +44,15 @@ public class CommentService {
         }
     }
 
+    public int increaseCommentCount(Integer blogid) {
+        return blogMapper.increaseCommentCount(blogid);
+    }
+
+    public int decreaseCommentCount(Integer blogid) {
+        return blogMapper.decreaseCommentCount(blogid);
+    }
+
+
     public List<CommentDTO> list() {
         return commentMapper.selectAllComments();
     }

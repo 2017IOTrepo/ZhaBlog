@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2019-12-07 16:11:30
+-- 生成日期： 2020-10-14 22:50:39
 -- 服务器版本： 5.7.26-log
 -- PHP 版本： 7.0.33
 
@@ -36,10 +36,15 @@ CREATE TABLE `blog` (
   `gmtModified` bigint(20) DEFAULT NULL,
   `creator` int(11) DEFAULT NULL,
   `commentCount` int(11) DEFAULT '0',
-  `viewCount` int(11) DEFAULT '0',
-  `likeCount` int(11) DEFAULT '0',
   `tag` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `blog`
+--
+
+INSERT INTO `blog` (`id`, `title`, `content`, `gmtCreate`, `gmtModified`, `creator`, `commentCount`, `tag`) VALUES
+(1, '嘿嘿hi', 'asdasdd', 1602686145802, 1602686145802, 1, 0, '嗯嗯嗯');
 
 -- --------------------------------------------------------
 
@@ -49,13 +54,18 @@ CREATE TABLE `blog` (
 
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
-  `likeCount` int(11) DEFAULT NULL,
   `content` varchar(50) DEFAULT NULL,
-  `gmtCreate` bigint(20) DEFAULT NULL,
-  `gmtModified` bigint(20) DEFAULT NULL,
   `blogId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `comment`
+--
+
+INSERT INTO `comment` (`id`, `content`, `blogId`, `userId`) VALUES
+(1, '回复', 1, 1),
+(2, 'fgsdfsdfs', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -69,10 +79,16 @@ CREATE TABLE `user` (
   `name` varchar(50) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
   `gmtCreate` bigint(20) DEFAULT NULL,
-  `gmtModified` bigint(20) DEFAULT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
   `bio` varchar(256) NOT NULL DEFAULT '什么都没有'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `name`, `password`, `gmtCreate`, `isAdmin`, `bio`) VALUES
+(1, '123456@qq.com', 'zhazha', '$2a$10$gZ0c720DA4BXYgQ64Wb4EOXfWx/DE0KdPrKl/C37bxJJHfL4WDRiO', 1602686120326, 0, '这个人没写呢');
 
 --
 -- 转储表的索引
@@ -107,19 +123,19 @@ ALTER TABLE `user`
 -- 使用表AUTO_INCREMENT `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用表AUTO_INCREMENT `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 限制导出的表

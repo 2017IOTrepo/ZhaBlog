@@ -42,6 +42,7 @@ public class DeleteController {
             Model model) {
 
         commentService.deleteById(id);
+        commentService.decreaseCommentCount(blogid);
 
         return "redirect:/blog/" + String.valueOf(blogid);
     }
@@ -65,6 +66,7 @@ public class DeleteController {
             Model model) {
 
         commentService.deleteById(id);
+        commentService.decreaseCommentCount(blogid);
 
         return "redirect:/";
     }

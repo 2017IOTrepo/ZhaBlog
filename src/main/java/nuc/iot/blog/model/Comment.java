@@ -2,10 +2,7 @@ package nuc.iot.blog.model;
 
 public class Comment {
     private Integer id;
-    private int likeCount;
     private String content;
-    private Long gmtCreate;
-    private Long gmtModified;
     private Integer blogId;
     private Integer userId;
 
@@ -17,36 +14,12 @@ public class Comment {
         this.id = id;
     }
 
-    public int getLikeCount() {
-        return likeCount;
-    }
-
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
-    }
-
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Long getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Long gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Long getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Long gmtModified) {
-        this.gmtModified = gmtModified;
     }
 
     public Integer getBlogId() {

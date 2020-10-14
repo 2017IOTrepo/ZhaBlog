@@ -9,7 +9,6 @@ public class User {
     private String name;
     private String email;
     private Long gmtCreate;
-    private Long gmtModified;
     private boolean isAdmin;
     private String bio;
 
@@ -17,13 +16,12 @@ public class User {
     }
 
     public User(String password, String name, String email,
-                Long gmtCreate, Long gmtModified, boolean isAdmin,
+                Long gmtCreate, boolean isAdmin,
                 String bio) {
         this.password = password;
         this.name = name;
         this.email = email;
         this.gmtCreate = gmtCreate;
-        this.gmtModified = gmtModified;
         this.isAdmin = isAdmin;
         this.bio = bio;
     }
@@ -68,14 +66,6 @@ public class User {
         this.gmtCreate = gmtCreate;
     }
 
-    public Long getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Long gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -100,7 +90,6 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", gmtCreate=" + gmtCreate +
-                ", gmtModified=" + gmtModified +
                 ", isAdmin=" + isAdmin +
                 ", bio='" + bio + '\'' +
                 '}';
