@@ -1,14 +1,6 @@
 # ZhaBlog
 扎扎博客 JavaEE期末大作业
 
-### 功能描述
-
-![1](img/1.jpg)
-
-![2](img/2.jpg)
-
-![3](img/3.jpg)
-
 ### 环境
 
 前端: bootstrap3
@@ -29,7 +21,7 @@
 
 #### 博客内容
 
-![self](img/self.jpg)
+![](https://cdn.jsdelivr.net/gh/xmmmmmovo/ResourcesBackup/blog/pics/20201020195147.png)
 
 ![self](img/self2.jpg)
 
