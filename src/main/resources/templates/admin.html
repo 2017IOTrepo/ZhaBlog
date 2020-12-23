@@ -16,7 +16,7 @@
                 <div class="media" th:each="blog : ${pagination}">
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a th:href="@{'/question/'+ ${blog.id}}" th:text="${blog.title}"></a>
+                            <a th:href="@{'/blog/'+ ${blog.id}}" th:text="${blog.title}"></a>
                         </h4>
                         <span class="text-desc">
                         <span
